@@ -6,17 +6,26 @@ export type Note = {
   title: string;
 };
 
-const initialState: Note[] = [];
+export type NotesState = {
+  idsList: number[];
+  notes: Record<number, Note>;
+  lastId: number;
+};
+
+const initialState: NotesState = {
+  idsList: [],
+  notes: {},
+  lastId: 0,
+};
 
 export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    createNote: (store, action: { payload: Omit<Note, "id"> }) => {
-      store.push({
-        ...action.payload,
-        id: (store[store.length - 1]?.id || 0) + 1,
-      });
+    createNote: (store, action: { payload: Note }) => {
+      store.idsList.unshift(action.payload.id);
+      store.notes[action.payload.id] = action.payload;
+      store.lastId = action.payload.id;
     },
   },
 });
