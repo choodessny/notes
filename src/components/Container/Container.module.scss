@@ -3,13 +3,19 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
+  align-items: stretch;
 }
 .left {
-  width: 250px;
-  flex: 0 0 250px;
+  width: 330px;
+  flex: 0 0 330px;
 }
 .right {
   flex: 1 1 auto;
+}
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
 }
 
 .divider {

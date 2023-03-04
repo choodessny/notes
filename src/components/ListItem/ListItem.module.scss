@@ -1,0 +1,26 @@
+.listItemContainer {
+  padding: 10px 25px;
+  padding-bottom: 0;
+  background-color: var(--note-list-background-color);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 3px 5px;
+  &.selected {
+    background-color: var(--selected-note-background-color);
+
+    .listItem {
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.listItem {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--title-color);
+}

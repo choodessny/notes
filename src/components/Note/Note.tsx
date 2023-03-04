@@ -1,23 +1,20 @@
-import { useMatch } from "react-router-dom";
-import { useAppSelector } from "../../store/store";
 import { Header } from "../Header/Header";
 import { CreateButton } from "../CreateButton/CreateButton";
+import { useCurrentId } from "../../hooks/useCurrentId";
+import { useAppSelector } from "../../store/store";
+import { Editor } from "../Editor/Editor";
 
 export const Note = () => {
-  const match = useMatch("/:id");
-  const notes = useAppSelector((state) => state.notes);
+  const currentNoteId = useCurrentId();
+  const notes = useAppSelector((state) => state.notes.notes);
+  const currentNote = currentNoteId ? notes[currentNoteId] : null;
 
-  if (!match) return null;
-  const currentNoteId = match.params.id;
-  const currentNote = notes.notes[Number(currentNoteId)];
-
-  if (!currentNote) return null;
   return (
     <div>
       <Header>
         <CreateButton />
       </Header>
-      <div> {currentNote.text}</div>
+      {currentNote && <Editor note={currentNote} />}
     </div>
   );
 };
