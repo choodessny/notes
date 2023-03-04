@@ -1,12 +1,10 @@
 import "./App.scss";
-import { CreateButton } from "./components/CreateButton/CreateButton";
-import { Note } from "./components/Note/Note";
+import { Container } from "./components/Container/Container";
 
 function App() {
   return (
     <div>
-      <Note></Note>
-      <CreateButton></CreateButton>
+      <Container></Container>
     </div>
   );
 }

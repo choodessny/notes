@@ -1,0 +1,38 @@
+:root {
+  --text-color: rgb(71, 71, 71);
+  --note-background-color: rgb(255, 255, 255);
+  --note-list-background-color: rgb(255, 255, 255);
+  --system-text-color: rgb(128, 128, 128);
+  --button-color: rgb(104, 101, 101);
+  --disabled-button-color: rgb(182, 177, 176);
+  --title-color: rgb(39, 39, 39);
+  --line-color: rgb(230, 230, 230);
+  --preview-text-color: rgb(159, 159, 159);
+  --selected-note-background-color: rgb(221, 220, 220);
+  --header-color: rgb(242, 236, 235);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: rgb(221, 220, 220);
+    --note-background-color: rgb(31, 30, 30);
+    --note-list-background-color: rgb(43, 33, 30);
+    --system-text-color: rgb(128, 128, 128);
+    --button-color: rgb(159, 154, 153);
+    --disabled-button-color: rgb(103, 95, 93);
+    --title-color: rgb(223, 221, 221);
+    --line-color: rgb(0, 0, 0);
+    --preview-text-color: rgb(159, 155, 153);
+    --selected-note-background-color: rgb(70, 70, 70);
+    --header-color: rgb(40, 32, 30);
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--note-background-color);
+  color: var(--text-color);
+}
+
+* {
+  box-sizing: border-box;
+}

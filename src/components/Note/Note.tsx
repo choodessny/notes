@@ -1,5 +1,7 @@
 import { useMatch } from "react-router-dom";
 import { useAppSelector } from "../../store/store";
+import { Header } from "../Header/Header";
+import { CreateButton } from "../CreateButton/CreateButton";
 
 export const Note = () => {
   const match = useMatch("/:id");
@@ -10,5 +12,12 @@ export const Note = () => {
   const currentNote = notes.notes[Number(currentNoteId)];
 
   if (!currentNote) return null;
-  return <div> {currentNote.text}</div>;
+  return (
+    <div>
+      <Header>
+        <CreateButton />
+      </Header>
+      <div> {currentNote.text}</div>
+    </div>
+  );
 };
