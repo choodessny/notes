@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 export type Note = {
   text: string;
@@ -32,4 +34,4 @@ export const notesSlice = createSlice({
 
 export const { createNote } = notesSlice.actions;
 
-export default notesSlice.reducer;
+export default persistReducer({ key: "notes", storage }, notesSlice.reducer);

@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import notes from "./reducers/notes";
 import { useDispatch, useSelector } from "react-redux";
+import {persistStore} from "redux-persist";
 
 export const store = configureStore({
   reducer: { notes },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 
+export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
