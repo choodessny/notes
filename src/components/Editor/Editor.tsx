@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
 import { editNote, Note } from "../../store/reducers/notes";
 import { Date } from "../Date/Date";
 import styles from "./Editor.module.scss";
 import markdownToTxt from "markdown-to-txt";
 import { useEffect, useRef } from "react";
 import { setLine } from "../../store/reducers/textPosition";
+import { useTextPosition } from "../../providers/textPosition";
+import { useNotes } from "../../providers/notes";
 
 type TEditorProps = {
   note: Note;
@@ -12,9 +13,10 @@ type TEditorProps = {
 };
 
 export const Editor: React.FC<TEditorProps> = ({ note, onStopEditing }) => {
-  const dispatch = useDispatch();
+  const { setLine } = useTextPosition();
+  const { editNote } = useNotes();
   useEffect(() => {
-    dispatch(setLine(0));
+    setLine(0);
   }, [note.id]);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const updateCurrentLine = () => {
@@ -23,7 +25,7 @@ export const Editor: React.FC<TEditorProps> = ({ note, onStopEditing }) => {
     const linesBeforeCursor = textArea.value
       .substring(0, textArea.selectionStart)
       .split("\n");
-    dispatch(setLine(linesBeforeCursor.length - 1));
+    setLine(linesBeforeCursor.length - 1);
   };
 
   useEffect(() => {
@@ -58,15 +60,13 @@ export const Editor: React.FC<TEditorProps> = ({ note, onStopEditing }) => {
               .filter((line) => line.trim());
             const newPreview = notEmptyLines[1] || "Нет дополнительного текста";
             const newTitle = notEmptyLines[0] || "Без названия";
-            dispatch(
-              editNote({
-                ...note,
-                text: newText,
-                title: newTitle,
-                preview: newPreview,
-                plainText: plainText,
-              })
-            );
+            editNote({
+              ...note,
+              text: newText,
+              title: newTitle,
+              preview: newPreview,
+              plainText: plainText,
+            });
           }}
           value={note.text}
         />

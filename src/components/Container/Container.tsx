@@ -1,14 +1,13 @@
 import { Note } from "../Note/Note";
 import styles from "./Container.module.scss";
 import { ListView } from "../ListView/ListView";
-import { TView } from "../../store/reducers/view";
-import { useAppSelector } from "../../store/store";
 import { TilesView } from "../TilesView/TilesView";
 import { Header } from "../Header/Header";
 import { NoteHeaderElements } from "../NoteHeaderElements/NoteHeaderElements";
+import { TView, useView } from "../../providers/view";
 
 export const Container = () => {
-  const view = useAppSelector((state) => state.view.view);
+  const { view } = useView();
   return (
     <>
       {view === TView.list && (

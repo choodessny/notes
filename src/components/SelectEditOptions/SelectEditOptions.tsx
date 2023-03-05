@@ -1,20 +1,18 @@
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import FormatColorTextTwoToneIcon from "@mui/icons-material/FormatColorTextTwoTone";
 import { useState } from "react";
-import { useAppSelector } from "../../store/store";
 import { useCurrentId } from "../../hooks/useCurrentId";
-import { useDispatch } from "react-redux";
-import { editNote } from "../../store/reducers/notes";
+import { useTextPosition } from "../../providers/textPosition";
+import { useNotes } from "../../providers/notes";
 
 const SIZES = [1, 2, 3, 4, 5];
 
 export const SelectEditOptions = () => {
-  const textPosition = useAppSelector((state) => state.textPosition.line);
+  const { line } = useTextPosition();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const currentNoteId = useCurrentId();
-  const notes = useAppSelector((state) => state.notes.notes);
-  const dispatch = useDispatch();
+  const { notes, editNote } = useNotes();
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -37,13 +35,13 @@ export const SelectEditOptions = () => {
               const currentNote = currentNoteId ? notes[currentNoteId] : null;
               if (currentNote) {
                 const lines = currentNote.text.split("\n");
-                const lineText = lines[textPosition];
+                const lineText = lines[line];
                 const lineTextWithoutHeader = lineText.replace(/^#+\s/, "");
                 const newLineText = `${"#".repeat(
                   size
                 )} ${lineTextWithoutHeader}`;
-                lines[textPosition] = newLineText;
-                dispatch(editNote({ ...currentNote, text: lines.join("\n") }));
+                lines[line] = newLineText;
+                editNote({ ...currentNote, text: lines.join("\n") });
               }
               setAnchorEl(null);
             }}

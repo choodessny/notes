@@ -6,6 +6,7 @@ import styles from "./TilesItem.module.scss";
 import { useCurrentId } from "../../hooks/useCurrentId";
 import classNames from "classnames";
 import { TilesPreview } from "../TilePreview/TilePreview";
+import { useNotes } from "../../providers/notes";
 
 type TTilesItemProps = {
   id: number;
@@ -14,7 +15,7 @@ type TTilesItemProps = {
 
 export const TilesItem: React.FC<TTilesItemProps> = ({ id, onDoubleClick }) => {
   const currentNoteId = useCurrentId();
-  const notes = useAppSelector((state) => state.notes.notes);
+  const { notes } = useNotes();
   const navigate = useNavigate();
   const note = notes[id];
   return (

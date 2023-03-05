@@ -5,6 +5,7 @@ import { useAppSelector } from "../../store/store";
 import styles from "./ListItem.module.scss";
 import { useCurrentId } from "../../hooks/useCurrentId";
 import classNames from "classnames";
+import { useNotes } from "../../providers/notes";
 
 type TListItemProps = {
   id: number;
@@ -12,7 +13,7 @@ type TListItemProps = {
 
 export const ListItem: React.FC<TListItemProps> = ({ id }) => {
   const currentNoteId = useCurrentId();
-  const notes = useAppSelector((state) => state.notes.notes);
+  const { notes } = useNotes();
   const navigate = useNavigate();
   const note = notes[id];
   return (

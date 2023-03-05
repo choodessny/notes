@@ -9,11 +9,12 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { IconButton } from "@mui/material";
 import { NoteHeaderElements } from "../NoteHeaderElements/NoteHeaderElements";
 import { useAppSelector } from "../../store/store";
+import { useNotes, useNotesCount } from "../../providers/notes";
 
 export const TilesView = () => {
-  const noteCount = useAppSelector((state) => state.notes.idsList.length);
+  const noteCount = useNotesCount();
   const previosNoteCount = useRef<number>(noteCount);
-  const notes = useAppSelector((state) => state.notes.notes);
+  const {notes} = useNotes()
   const currentNoteId = useCurrentId();
   const [isOpened, setIsOpened] = useState<boolean>(!!currentNoteId);
   useEffect(() => {

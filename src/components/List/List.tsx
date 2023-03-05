@@ -1,9 +1,8 @@
-import { useAppSelector } from "../../store/store";
 import styles from "../List/List.module.scss";
 import { ListItem } from "../ListItem/ListItem";
-import { TView } from "../../store/reducers/view";
 import { TilesItem } from "../TilesItem/TilesItem";
 import { useNotesIds } from "../../hooks/useNotesIds";
+import { TView, useView } from "../../providers/view";
 
 type TListProps = {
   onDoubleClick?: () => void;
@@ -11,7 +10,7 @@ type TListProps = {
 
 export const List: React.FC<TListProps> = ({ onDoubleClick }) => {
   const idsList = useNotesIds();
-  const view = useAppSelector((state) => state.view.view);
+  const { view } = useView();
   return (
     <>
       {view === TView.list && (

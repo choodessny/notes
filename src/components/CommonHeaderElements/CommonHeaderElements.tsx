@@ -4,20 +4,20 @@ import GridViewTwoToneIcon from "@mui/icons-material/GridViewTwoTone";
 import DeleteOutlineTwoToneIcon from "@mui/icons-material/DeleteOutlineTwoTone";
 import { IconButton } from "@mui/material";
 import { Spacer } from "../Spacer/Spacer";
-import { changeView, TView } from "../../store/reducers/view";
-import { useDispatch } from "react-redux";
-import { deleteNote } from "../../store/reducers/notes";
 import { useCurrentId } from "../../hooks/useCurrentId";
+import { TView, useView } from "../../providers/view";
+import { useNotes } from "../../providers/notes";
 
 export const CommonHeaderElements = () => {
-  const dispatch = useDispatch();
+  const { setView } = useView();
+  const { deleteNote } = useNotes();
   const currentNoteId = useCurrentId();
   return (
     <Fragment>
       <IconButton
         title="Отобразить в форме списка"
         onClick={() => {
-          dispatch(changeView(TView.list));
+          setView(TView.list);
         }}
       >
         <FormatListBulletedTwoToneIcon />
@@ -25,7 +25,7 @@ export const CommonHeaderElements = () => {
       <IconButton
         title="Отобразить в форме плиток"
         onClick={() => {
-          dispatch(changeView(TView.tiles));
+          setView(TView.tiles);
         }}
       >
         <GridViewTwoToneIcon />
@@ -35,7 +35,7 @@ export const CommonHeaderElements = () => {
         disabled={!currentNoteId}
         onClick={() => {
           if (currentNoteId) {
-            dispatch(deleteNote(currentNoteId));
+            deleteNote(currentNoteId);
           }
         }}
       >
