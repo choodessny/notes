@@ -10,7 +10,13 @@ type TEditorProps = {
 
 export const MarkDownView: React.FC<TEditorProps> = ({ note, onClick }) => {
   return (
-    <div className={styles.containerMarkDown} onClick={onClick}>
+    <div
+      className={styles.containerMarkDown}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick?.();
+      }}
+    >
       <Date note={note} />
       <ReactMarkdown linkTarget={"_blank"}>{note.text}</ReactMarkdown>
     </div>

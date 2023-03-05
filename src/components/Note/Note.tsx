@@ -34,5 +34,7 @@ export const Note = () => {
       />
     );
   }
-  return <Editor note={currentNote} />;
+  return (
+    <Editor onStopEditing={() => setIsEditing(false)} note={currentNote} />
+  );
 };

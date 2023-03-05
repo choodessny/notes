@@ -8,9 +8,10 @@ import { setLine } from "../../store/reducers/textPosition";
 
 type TEditorProps = {
   note: Note;
+  onStopEditing: () => void;
 };
 
-export const Editor: React.FC<TEditorProps> = ({ note }) => {
+export const Editor: React.FC<TEditorProps> = ({ note, onStopEditing }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLine(0));
@@ -24,6 +25,19 @@ export const Editor: React.FC<TEditorProps> = ({ note }) => {
       .split("\n");
     dispatch(setLine(linesBeforeCursor.length - 1));
   };
+
+  useEffect(() => {
+    const outsideClickListener = (event: MouseEvent) => {
+      if (
+        textAreaRef.current &&
+        !textAreaRef.current.contains(event.target as Node)
+      ) {
+        onStopEditing();
+      }
+    };
+    window.addEventListener("click", outsideClickListener);
+    return () => window.removeEventListener("click", outsideClickListener);
+  }, []);
 
   return (
     <div className={styles.editorContainer}>

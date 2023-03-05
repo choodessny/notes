@@ -20,14 +20,20 @@ export const SelectEditOptions = () => {
   };
   return (
     <div>
-      <IconButton onClick={(event) => setAnchorEl(event.currentTarget)}>
+      <IconButton
+        onClick={(event) => {
+          setAnchorEl(event.currentTarget);
+          event.stopPropagation();
+        }}
+      >
         <FormatColorTextTwoToneIcon />
       </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {SIZES.map((size) => (
           <MenuItem
             key={size}
-            onClick={() => {
+            onClick={(event) => {
+              event.stopPropagation();
               const currentNote = currentNoteId ? notes[currentNoteId] : null;
               if (currentNote) {
                 const lines = currentNote.text.split("\n");
