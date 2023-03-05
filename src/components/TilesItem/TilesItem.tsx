@@ -5,6 +5,7 @@ import { useAppSelector } from "../../store/store";
 import styles from "./TilesItem.module.scss";
 import { useCurrentId } from "../../hooks/useCurrentId";
 import classNames from "classnames";
+import { TilesPreview } from "../TilePreview/TilePreview";
 
 type TTilesItemProps = {
   id: number;
@@ -26,7 +27,9 @@ export const TilesItem: React.FC<TTilesItemProps> = ({ id, onDoubleClick }) => {
         className={classNames(styles.tilesItemContainer, {
           [styles.selected]: currentNoteId === id,
         })}
-      ></div>
+      >
+        <TilesPreview note={note} />
+      </div>
       <div className={styles.tilesItem}>
         <div className={styles.title}>{note.title}</div>
         <div className={styles.date}>

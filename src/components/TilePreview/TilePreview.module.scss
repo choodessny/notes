@@ -1,0 +1,18 @@
+$tilePreviewWidth: 250px;
+$tilePreviewHeight: 180px;
+$scale: 5;
+$innerPadding: 10px;
+
+.previewTilesContainer {
+  width: $tilePreviewWidth;
+  height: $tilePreviewHeight;
+  overflow: hidden;
+  pointer-events: none;
+}
+.previewTilesInnerContainer {
+  padding: $innerPadding * $scale;
+  width: $tilePreviewWidth * $scale;
+  height: $tilePreviewHeight * $scale;
+  transform: scale(1 / $scale);
+  transform-origin: top left;
+}

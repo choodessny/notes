@@ -1,4 +1,3 @@
-import { CreateButton } from "../CreateButton/CreateButton";
 import { Spacer } from "../Spacer/Spacer";
 import { Header } from "../Header/Header";
 import { List } from "../List/List";

@@ -10,17 +10,12 @@
   height: 190px;
   background-color: var(--selected-note-background-color);
   border-radius: 10px;
+  border: 3px solid transparent;
 
   cursor: pointer;
   &.selected {
     border: 3px solid var(--selected-note-tiles-border-color);
-
-    .tilesItem {
-    }
   }
-}
-
-.tilesItem {
 }
 
 .title {
