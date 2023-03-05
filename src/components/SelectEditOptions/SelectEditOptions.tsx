@@ -10,7 +10,6 @@ const SIZES = [1, 2, 3, 4, 5];
 
 export const SelectEditOptions = () => {
   const textPosition = useAppSelector((state) => state.textPosition.line);
-  console.log("textPosition", textPosition);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const currentNoteId = useCurrentId();

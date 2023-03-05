@@ -12,7 +12,7 @@ export const MarkDownView: React.FC<TEditorProps> = ({ note, onClick }) => {
   return (
     <div className={styles.containerMarkDown} onClick={onClick}>
       <Date note={note} />
-      <ReactMarkdown>{note.text}</ReactMarkdown>
+      <ReactMarkdown linkTarget={"_blank"}>{note.text}</ReactMarkdown>
     </div>
   );
 };

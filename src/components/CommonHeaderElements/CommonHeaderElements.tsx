@@ -10,34 +10,37 @@ import { deleteNote } from "../../store/reducers/notes";
 import { useCurrentId } from "../../hooks/useCurrentId";
 
 export const CommonHeaderElements = () => {
-    const dispatch = useDispatch();
-    const currentNoteId = useCurrentId();
-  return <Fragment>
-    <IconButton
-  title="Отобразить в форме списка"
-  onClick={() => {
-    dispatch(changeView(TView.list));
-  }}
->
-  <FormatListBulletedTwoToneIcon />
-</IconButton>
-<IconButton
-  title="Отобразить в форме плиток"
-  onClick={() => {
-    dispatch(changeView(TView.tiles));
-  }}
->
-  <GridViewTwoToneIcon />
-</IconButton>
-<Spacer />
-<IconButton
-  disabled={!currentNoteId}
-  onClick={() => {
-    if (currentNoteId) {
-      dispatch(deleteNote(currentNoteId));
-    }
-  }}
->
-  <DeleteOutlineTwoToneIcon />
-</IconButton></Fragment>;
+  const dispatch = useDispatch();
+  const currentNoteId = useCurrentId();
+  return (
+    <Fragment>
+      <IconButton
+        title="Отобразить в форме списка"
+        onClick={() => {
+          dispatch(changeView(TView.list));
+        }}
+      >
+        <FormatListBulletedTwoToneIcon />
+      </IconButton>
+      <IconButton
+        title="Отобразить в форме плиток"
+        onClick={() => {
+          dispatch(changeView(TView.tiles));
+        }}
+      >
+        <GridViewTwoToneIcon />
+      </IconButton>
+      <Spacer />
+      <IconButton
+        disabled={!currentNoteId}
+        onClick={() => {
+          if (currentNoteId) {
+            dispatch(deleteNote(currentNoteId));
+          }
+        }}
+      >
+        <DeleteOutlineTwoToneIcon />
+      </IconButton>
+    </Fragment>
+  );
 };
