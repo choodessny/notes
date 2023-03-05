@@ -2,16 +2,31 @@ import { Spacer } from "../Spacer/Spacer";
 import { Header } from "../Header/Header";
 import { List } from "../List/List";
 import { CommonHeaderElements } from "../CommonHeaderElements/CommonHeaderElements";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCurrentId } from "../../hooks/useCurrentId";
 import { Note } from "../Note/Note";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { IconButton } from "@mui/material";
 import { NoteHeaderElements } from "../NoteHeaderElements/NoteHeaderElements";
+import { useAppSelector } from "../../store/store";
 
 export const TilesView = () => {
+  const noteCount = useAppSelector((state) => state.notes.idsList.length);
+  const previosNoteCount = useRef<number>(noteCount);
+  const notes = useAppSelector((state) => state.notes.notes);
   const currentNoteId = useCurrentId();
   const [isOpened, setIsOpened] = useState<boolean>(!!currentNoteId);
+  useEffect(() => {
+    if (noteCount > previosNoteCount.current) {
+      setIsOpened(true);
+    }
+    previosNoteCount.current = noteCount;
+  }, [noteCount]);
+  useEffect(() => {
+    if (!currentNoteId || !notes[currentNoteId]) {
+      setIsOpened(false);
+    }
+  }, [currentNoteId, notes]);
   return (
     <div>
       <Header>
@@ -24,7 +39,6 @@ export const TilesView = () => {
           <ArrowBackIosNewIcon />
         </IconButton>
         <CommonHeaderElements />
-        <Spacer />
         <NoteHeaderElements />
       </Header>
       {!isOpened && <List onDoubleClick={() => setIsOpened(true)} />}

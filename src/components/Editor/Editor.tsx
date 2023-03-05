@@ -17,6 +17,8 @@ export const Editor: React.FC<TEditorProps> = ({ note, onBlur }) => {
       <Date note={note} />
       <div className={styles.text}>
         <textarea
+          placeholder="Введите текст заметки"
+          autoFocus
           onBlur={onBlur}
           className={styles.textArea}
           onChange={(e) => {

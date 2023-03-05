@@ -15,6 +15,8 @@ export const NoteHeaderElements = () => {
       <CreateButton />
       <div className={styles.searchInputTextContainer}>
         <TextField
+          title="Поиск"
+          placeholder="Поиск"
           value={inputText}
           onChange={(e) => dispatch(setSearch(e.target.value.trim()))}
           InputProps={{

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { createNote } from "../../store/reducers/notes";
+import { createNote, editNote } from "../../store/reducers/notes";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import { IconButton } from "@mui/material";

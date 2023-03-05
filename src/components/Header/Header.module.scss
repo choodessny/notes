@@ -1,4 +1,7 @@
 .header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
   height: 60px;
   width: 100%;
   background-color: var(--header-color);

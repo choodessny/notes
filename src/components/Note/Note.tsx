@@ -12,9 +12,15 @@ export const Note = () => {
   const notes = useAppSelector((state) => state.notes.notes);
   const currentNote = currentNoteId ? notes[currentNoteId] : null;
   useEffect(() => {
-    setIsEditing(false);
+    if (currentNote?.text !== "") {
+      setIsEditing(false);
+    }
   }, [currentNoteId]);
-
+  useEffect(() => {
+    if (currentNote?.text === "") {
+      setIsEditing(true);
+    }
+  }, [currentNote?.text]);
   if (!currentNote) {
     return null;
   }
@@ -32,7 +38,10 @@ export const Note = () => {
     <Editor
       note={currentNote}
       onBlur={() => {
-        setIsEditing(true);
+        if (currentNote?.text === "") {
+          return;
+        }
+        setIsEditing(false);
       }}
     />
   );
