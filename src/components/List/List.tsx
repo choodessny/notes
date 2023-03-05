@@ -4,7 +4,11 @@ import { ListItem } from "../ListItem/ListItem";
 import { TView } from "../../store/reducers/view";
 import { TilesItem } from "../TilesItem/TilesItem";
 
-export const List = () => {
+type TListProps = {
+  onDoubleClick?: () => void;
+};
+
+export const List: React.FC<TListProps> = ({ onDoubleClick }) => {
   const idsList = useAppSelector((state) => state.notes.idsList);
   const view = useAppSelector((state) => state.view.view);
   return (
@@ -19,7 +23,7 @@ export const List = () => {
       {view === TView.tiles && (
         <div className={styles.tiles}>
           {idsList.map((id) => (
-            <TilesItem key={id} id={id} />
+            <TilesItem onDoubleClick={onDoubleClick} key={id} id={id} />
           ))}
         </div>
       )}

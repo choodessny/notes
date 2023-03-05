@@ -6,24 +6,28 @@ import styles from "./TilesItem.module.scss";
 import { useCurrentId } from "../../hooks/useCurrentId";
 import classNames from "classnames";
 
-type TypeTilesItemProps = {
+type TTilesItemProps = {
   id: number;
+  onDoubleClick?: () => void;
 };
 
-export const TilesItem: React.FC<TypeTilesItemProps> = ({ id }) => {
+export const TilesItem: React.FC<TTilesItemProps> = ({ id, onDoubleClick }) => {
   const currentNoteId = useCurrentId();
   const notes = useAppSelector((state) => state.notes.notes);
   const navigate = useNavigate();
   const note = notes[id];
   return (
-    <div className={styles.tilesContainer}>
+    <div
+      className={styles.tilesContainer}
+      onClick={() => navigate(`/${id}`)}
+      onDoubleClick={onDoubleClick}
+    >
       <div
-        onClick={() => navigate(`/${id}`)}
         className={classNames(styles.tilesItemContainer, {
           [styles.selected]: currentNoteId === id,
         })}
       ></div>
-      <div className={styles.tilesItem} onClick={() => navigate(`/${id}`)}>
+      <div className={styles.tilesItem}>
         <div className={styles.title}>{note.title}</div>
         <div>
           <div>

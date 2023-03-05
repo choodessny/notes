@@ -25,6 +25,11 @@ export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
+    deleteNote: (store, action: { payload: number }) => {
+      delete store.notes[action.payload];
+      store.idsList = store.idsList.filter((id) => id !== action.payload);
+    },
+
     createNote: (store, action: { payload: Note }) => {
       store.idsList.unshift(action.payload.id);
       store.notes[action.payload.id] = action.payload;
@@ -33,6 +38,6 @@ export const notesSlice = createSlice({
   },
 });
 
-export const { createNote } = notesSlice.actions;
+export const { createNote, deleteNote } = notesSlice.actions;
 
 export default persistReducer({ key: "notes", storage }, notesSlice.reducer);

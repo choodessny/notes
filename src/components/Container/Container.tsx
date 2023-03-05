@@ -1,11 +1,9 @@
 import { Note } from "../Note/Note";
 import styles from "./Container.module.scss";
-import { Header } from "../Header/Header";
+import { ListView } from "../ListView/ListView";
 import { TView } from "../../store/reducers/view";
 import { useAppSelector } from "../../store/store";
-import { ListView } from "../ListView/ListView";
 import { TilesView } from "../TilesView/TilesView";
-import { CreateButton } from "../CreateButton/CreateButton";
 
 export const Container = () => {
   const view = useAppSelector((state) => state.view.view);
@@ -24,13 +22,8 @@ export const Container = () => {
       )}
       {view === TView.tiles && (
         <div className={styles.container}>
-          <div className={styles.left}>
-            <TilesView />
-          </div>
           <div className={styles.right}>
-            <Header>
-              <CreateButton />
-            </Header>
+            <TilesView />
           </div>
         </div>
       )}
