@@ -14,7 +14,7 @@ const TextPositionContext = React.createContext<TSearchContextType>({
 export const TextPositionContextWrapper: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [line, setLine] = useState<string>("");
+  const [line, setLine] = useState<number>(0);
   return (
     <TextPositionContext.Provider value={{ line, setLine }}>
       {children}
