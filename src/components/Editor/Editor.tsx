@@ -1,21 +1,21 @@
-import dayjs from "dayjs";
 import { useDispatch } from "react-redux";
 import { editNote, Note } from "../../store/reducers/notes";
+import { Date } from "../Date/Date";
 import styles from "./Editor.module.scss";
 
 type TEditorProps = {
   note: Note;
+  onBlur: () => void;
 };
 
-export const Editor: React.FC<TEditorProps> = ({ note }) => {
+export const Editor: React.FC<TEditorProps> = ({ note, onBlur }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.editorContainer}>
-      <div className={styles.date}>
-        {dayjs(note.date).format("DD MMMM YYYY г. в hh:mm")}
-      </div>
+      <Date note={note} />
       <div className={styles.text}>
         <textarea
+          onBlur={onBlur}
           className={styles.textArea}
           onChange={(e) => {
             const newText = e.target.value;
