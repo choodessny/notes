@@ -3,13 +3,14 @@ import styles from "../List/List.module.scss";
 import { ListItem } from "../ListItem/ListItem";
 import { TView } from "../../store/reducers/view";
 import { TilesItem } from "../TilesItem/TilesItem";
+import { useNotesIds } from "../../hooks/useNotesIds";
 
 type TListProps = {
   onDoubleClick?: () => void;
 };
 
 export const List: React.FC<TListProps> = ({ onDoubleClick }) => {
-  const idsList = useAppSelector((state) => state.notes.idsList);
+  const idsList = useNotesIds();
   const view = useAppSelector((state) => state.view.view);
   return (
     <>

@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import notes from "./reducers/notes";
 import view from "./reducers/view";
+import search from "./reducers/searching";
 import { useDispatch, useSelector } from "react-redux";
 import { persistStore } from "redux-persist";
 
 export const store = configureStore({
-  reducer: { notes, view },
+  reducer: { notes, view, search },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 

@@ -7,7 +7,7 @@ import { useCurrentId } from "../../hooks/useCurrentId";
 import { Note } from "../Note/Note";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { IconButton } from "@mui/material";
-import { NoteHeaderElement } from "../NoteHeaderElement/NoteHeaderElement";
+import { NoteHeaderElements } from "../NoteHeaderElements/NoteHeaderElements";
 
 export const TilesView = () => {
   const currentNoteId = useCurrentId();
@@ -25,7 +25,7 @@ export const TilesView = () => {
         </IconButton>
         <CommonHeaderElements />
         <Spacer />
-        <NoteHeaderElement />
+        <NoteHeaderElements />
       </Header>
       {!isOpened && <List onDoubleClick={() => setIsOpened(true)} />}
       {isOpened && <Note />}

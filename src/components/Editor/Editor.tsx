@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { editNote, Note } from "../../store/reducers/notes";
 import { Date } from "../Date/Date";
 import styles from "./Editor.module.scss";
+import markdownToTxt from "markdown-to-txt";
 
 type TEditorProps = {
   note: Note;
@@ -10,6 +11,7 @@ type TEditorProps = {
 
 export const Editor: React.FC<TEditorProps> = ({ note, onBlur }) => {
   const dispatch = useDispatch();
+
   return (
     <div className={styles.editorContainer}>
       <Date note={note} />
@@ -19,7 +21,8 @@ export const Editor: React.FC<TEditorProps> = ({ note, onBlur }) => {
           className={styles.textArea}
           onChange={(e) => {
             const newText = e.target.value;
-            const notEmptyLines = newText
+            const plainText = markdownToTxt(newText);
+            const notEmptyLines = plainText
               .split("\n")
               .filter((line) => line.trim());
             const newPreview = notEmptyLines[1] || "Нет дополнительного текста";
@@ -30,6 +33,7 @@ export const Editor: React.FC<TEditorProps> = ({ note, onBlur }) => {
                 text: newText,
                 title: newTitle,
                 preview: newPreview,
+                plainText: plainText,
               })
             );
           }}

@@ -13,8 +13,10 @@ export const CreateButton = () => {
       onClick={() => {
         dispatch(
           createNote({
-            text: `test text ${nextId}`,
-            title: `title ${nextId}`,
+            preview: "Нет дополнительного текста",
+            plainText: "",
+            text: "",
+            title: "Без названия",
             id: nextId,
             date: new Date().getTime(),
           })

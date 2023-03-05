@@ -8,6 +8,7 @@ export type Note = {
   title: string;
   preview: string;
   date: number;
+  plainText: string;
 };
 
 export type NotesState = {

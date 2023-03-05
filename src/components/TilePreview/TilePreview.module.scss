@@ -13,6 +13,6 @@ $innerPadding: 10px;
   padding: $innerPadding * $scale;
   width: $tilePreviewWidth * $scale;
   height: $tilePreviewHeight * $scale;
-  transform: scale(1 / $scale);
+  transform: scale(calc(1 / $scale));
   transform-origin: top left;
 }
