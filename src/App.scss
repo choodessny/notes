@@ -10,6 +10,7 @@
   --preview-text-color: rgb(159, 159, 159);
   --selected-note-background-color: rgb(221, 220, 220);
   --header-color: rgb(242, 236, 235);
+  --selected-note-tiles-border-color: rgb(37, 37, 37);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -24,6 +25,7 @@
     --preview-text-color: rgb(159, 155, 153);
     --selected-note-background-color: rgb(70, 70, 70);
     --header-color: rgb(32, 32, 32);
+    --selected-note-tiles-border-color: rgb(247, 191, 62);
   }
 }
 

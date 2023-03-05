@@ -2,3 +2,10 @@
   background-color: var(--note-list-background-color);
   flex-grow: 1;
 }
+.tiles {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 25px 15px;
+}
