@@ -4,6 +4,8 @@ import { ListView } from "../ListView/ListView";
 import { TView } from "../../store/reducers/view";
 import { useAppSelector } from "../../store/store";
 import { TilesView } from "../TilesView/TilesView";
+import { Header } from "../Header/Header";
+import { NoteHeaderElement } from "../NoteHeaderElement/NoteHeaderElement";
 
 export const Container = () => {
   const view = useAppSelector((state) => state.view.view);
@@ -16,6 +18,9 @@ export const Container = () => {
           </div>
           <div className={styles.divider} />
           <div className={styles.right}>
+            <Header>
+              <NoteHeaderElement />
+            </Header>
             <Note />
           </div>
         </div>

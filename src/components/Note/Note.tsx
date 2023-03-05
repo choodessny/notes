@@ -9,12 +9,5 @@ export const Note = () => {
   const notes = useAppSelector((state) => state.notes.notes);
   const currentNote = currentNoteId ? notes[currentNoteId] : null;
 
-  return (
-    <div>
-      <Header>
-        <CreateButton />
-      </Header>
-      {currentNote && <Editor note={currentNote} />}
-    </div>
-  );
+  return <div>{currentNote && <Editor note={currentNote} />}</div>;
 };
