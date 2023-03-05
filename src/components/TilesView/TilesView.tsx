@@ -1,4 +1,3 @@
-import { Spacer } from "../Spacer/Spacer";
 import { Header } from "../Header/Header";
 import { List } from "../List/List";
 import { CommonHeaderElements } from "../CommonHeaderElements/CommonHeaderElements";
@@ -8,7 +7,6 @@ import { Note } from "../Note/Note";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { IconButton } from "@mui/material";
 import { NoteHeaderElements } from "../NoteHeaderElements/NoteHeaderElements";
-import { useAppSelector } from "../../store/store";
 import { useNotes, useNotesCount } from "../../providers/notes";
 
 export const TilesView = () => {

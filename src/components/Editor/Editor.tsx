@@ -1,11 +1,9 @@
-import { editNote, Note } from "../../store/reducers/notes";
-import { Date } from "../Date/Date";
+import { NoteDate } from "../NoteDate/NoteDate";
 import styles from "./Editor.module.scss";
 import markdownToTxt from "markdown-to-txt";
-import { useEffect, useRef } from "react";
-import { setLine } from "../../store/reducers/textPosition";
+import React, { useEffect, useRef } from "react";
 import { useTextPosition } from "../../providers/textPosition";
-import { useNotes } from "../../providers/notes";
+import { Note, useNotes } from "../../providers/notes";
 
 type TEditorProps = {
   note: Note;
@@ -43,7 +41,7 @@ export const Editor: React.FC<TEditorProps> = ({ note, onStopEditing }) => {
 
   return (
     <div className={styles.editorContainer}>
-      <Date note={note} />
+      <NoteDate note={note} />
       <div className={styles.text}>
         <textarea
           ref={textAreaRef}

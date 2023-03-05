@@ -1,7 +1,6 @@
 import React from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../store/store";
 import styles from "./ListItem.module.scss";
 import { useCurrentId } from "../../hooks/useCurrentId";
 import classNames from "classnames";

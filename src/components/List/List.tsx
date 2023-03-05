@@ -3,6 +3,7 @@ import { ListItem } from "../ListItem/ListItem";
 import { TilesItem } from "../TilesItem/TilesItem";
 import { useNotesIds } from "../../hooks/useNotesIds";
 import { TView, useView } from "../../providers/view";
+import React from "react";
 
 type TListProps = {
   onDoubleClick?: () => void;

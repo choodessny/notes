@@ -1,6 +1,7 @@
+import React from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Note } from "../../store/reducers/notes";
-import { Date } from "../Date/Date";
+import { Note } from "../../providers/notes";
+import { NoteDate } from "../NoteDate/NoteDate";
 import styles from "./MarkDownView.module.scss";
 
 type TEditorProps = {
@@ -17,7 +18,7 @@ export const MarkDownView: React.FC<TEditorProps> = ({ note, onClick }) => {
         onClick?.();
       }}
     >
-      <Date note={note} />
+      <NoteDate note={note} />
       <ReactMarkdown linkTarget={"_blank"}>{note.text}</ReactMarkdown>
     </div>
   );

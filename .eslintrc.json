@@ -4,11 +4,20 @@
   "plugins": [
     "@typescript-eslint/eslint-plugin"
   ],
+  "env": {
+    "browser": true
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "project": "./tsconfig.json"
   },
-  "rules": {}
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+        "error",
+        { "argsIgnorePattern": "^_" }
+    ]
+  }
 }
