@@ -1,6 +1,7 @@
 .editorContainer {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .date {
@@ -8,9 +9,20 @@
   margin-bottom: 6px;
   margin-top: 4px;
   font-size: 0.8em;
+  flex-shrink: 0;
 }
 
 .text {
   padding: 0px 15px 15px 15px;
   font-size: 1.1em;
+  flex-grow: 1;
+  .textArea {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    color: var(--text-color);
+    background-color: var(--note-background-color);
+  }
 }

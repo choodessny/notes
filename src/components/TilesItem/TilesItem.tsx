@@ -29,12 +29,10 @@ export const TilesItem: React.FC<TTilesItemProps> = ({ id, onDoubleClick }) => {
       ></div>
       <div className={styles.tilesItem}>
         <div className={styles.title}>{note.title}</div>
-        <div>
-          <div>
-            {dayjs(note.date).format(
-              dayjs(note.date).isSame(dayjs(), "day") ? "hh:mm" : "DD.MM.YYYY"
-            )}
-          </div>
+        <div className={styles.date}>
+          {dayjs(note.date).format(
+            dayjs(note.date).isSame(dayjs(), "day") ? "hh:mm" : "DD.MM.YYYY"
+          )}
         </div>
       </div>
     </div>

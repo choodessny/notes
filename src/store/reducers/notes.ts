@@ -35,9 +35,17 @@ export const notesSlice = createSlice({
       store.notes[action.payload.id] = action.payload;
       store.lastId = action.payload.id;
     },
+    editNote: (store, action: { payload: Note }) => {
+      store.notes[action.payload.id] = action.payload;
+      store.notes[action.payload.id].date = Date.now();
+      if (action.payload.id !== store.idsList[0]) {
+        store.idsList = store.idsList.filter((id) => id !== action.payload.id);
+        store.idsList.unshift(action.payload.id);
+      }
+    },
   },
 });
 
-export const { createNote, deleteNote } = notesSlice.actions;
+export const { createNote, deleteNote, editNote } = notesSlice.actions;
 
 export default persistReducer({ key: "notes", storage }, notesSlice.reducer);
