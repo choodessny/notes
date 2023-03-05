@@ -14,8 +14,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: rgb(221, 220, 220);
-    --note-background-color: rgb(31, 30, 30);
-    --note-list-background-color: rgb(43, 33, 30);
+    --note-background-color: rgb(16, 16, 16);
+    --note-list-background-color: rgb(21, 21, 21);
     --system-text-color: rgb(128, 128, 128);
     --button-color: rgb(159, 154, 153);
     --disabled-button-color: rgb(103, 95, 93);
@@ -23,7 +23,7 @@
     --line-color: rgb(0, 0, 0);
     --preview-text-color: rgb(159, 155, 153);
     --selected-note-background-color: rgb(70, 70, 70);
-    --header-color: rgb(40, 32, 30);
+    --header-color: rgb(32, 32, 32);
   }
 }
 
