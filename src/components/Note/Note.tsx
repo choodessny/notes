@@ -34,15 +34,5 @@ export const Note = () => {
       />
     );
   }
-  return (
-    <Editor
-      note={currentNote}
-      onBlur={() => {
-        if (currentNote?.text === "") {
-          return;
-        }
-        setIsEditing(false);
-      }}
-    />
-  );
+  return <Editor note={currentNote} />;
 };

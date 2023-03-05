@@ -1,11 +1,12 @@
 import { CreateButton } from "../CreateButton/CreateButton";
 
-import { TextField } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "./NoteHeaderElements.module.scss";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../store/reducers/searching";
 import { useAppSelector } from "../../store/store";
+import { SelectEditOptions } from "../SelectEditOptions/SelectEditOptions";
 
 export const NoteHeaderElements = () => {
   const inputText = useAppSelector((state) => state.search.text);
@@ -13,6 +14,7 @@ export const NoteHeaderElements = () => {
   return (
     <>
       <CreateButton />
+      <SelectEditOptions />
       <div className={styles.searchInputTextContainer}>
         <TextField
           title="Поиск"
