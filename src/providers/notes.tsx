@@ -67,6 +67,7 @@ export const NotesContextWrapper: React.FC<React.PropsWithChildren> = ({
     const newNotes = { ...notes };
     newNotes[note.id] = note;
     setNotes(newNotes);
+    setIdsList([note.id, ...idsList.filter((noteId) => noteId !== note.id)]);
   };
 
   useEffect(() => {
