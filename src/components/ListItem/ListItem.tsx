@@ -23,14 +23,14 @@ export const ListItem: React.FC<TListItemProps> = ({ id }) => {
     >
       <div className={styles.listItem} onClick={() => navigate(`/${id}`)}>
         <div className={styles.title}>{note.title}</div>
-        <div>
+        <div className={styles.secondLine}>
           <div>
             {dayjs(note.date).format(
               dayjs(note.date).isSame(dayjs(), "day") ? "hh:mm" : "DD.MM.YYYY"
             )}
           </div>
 
-          <div></div>
+          <div className={styles.preview}>{note.preview}</div>
         </div>
       </div>
     </div>

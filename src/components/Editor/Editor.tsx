@@ -19,10 +19,19 @@ export const Editor: React.FC<TEditorProps> = ({ note, onBlur }) => {
           className={styles.textArea}
           onChange={(e) => {
             const newText = e.target.value;
-            const newTitle =
-              newText.split("\n").find((line) => !/^\s*$/.test(line)) ||
-              "Без названия";
-            dispatch(editNote({ ...note, text: newText, title: newTitle }));
+            const notEmptyLines = newText
+              .split("\n")
+              .filter((line) => line.trim());
+            const newPreview = notEmptyLines[1] || "Нет дополнительного текста";
+            const newTitle = notEmptyLines[0] || "Без названия";
+            dispatch(
+              editNote({
+                ...note,
+                text: newText,
+                title: newTitle,
+                preview: newPreview,
+              })
+            );
           }}
           value={note.text}
         />

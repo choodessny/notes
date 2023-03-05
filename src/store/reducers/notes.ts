@@ -6,6 +6,7 @@ export type Note = {
   text: string;
   id: number;
   title: string;
+  preview: string;
   date: number;
 };
 

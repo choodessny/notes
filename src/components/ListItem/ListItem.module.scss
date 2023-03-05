@@ -26,4 +26,19 @@
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.secondLine {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  white-space: nowrap;
+  opacity: 0.7;
 }
